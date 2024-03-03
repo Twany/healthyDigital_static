@@ -4,40 +4,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
     <title>区块详情</title>
 </head>
 
 <body>
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">区块详情</h1>
-        <div class="bg-white shadow-md p-4 mb-4">
-            <h2 class="text-xl font-bold mb-2">基本信息</h2>
-            <p>区块高度：1000</p>
-            <p>创建时间：2022-08-15 10:00:00</p>
-            <p>哈希值：0x1234567890abcdef</p>
-            <p>前一个区块哈希值：0x0987654321fedcba</p>
+    <ul class="menu bg-base-200 w-56 rounded-box absolute">
+        <li><a href="./dashboard.html">首页</a></li>
+        <li><a href="./myBlock.html">我的区块</a></li>
+        <li><a href="./blockDetail.html">区块信息</a></li>
+        <li><a href="./valueUser.html">用户搜索</a></li>
+        <li><a href="./acticleDetail.html">文章信息</a></li>
+        <li><a href="./aiAnalysis.html">AI智能分析</a></li>
+
+    </ul>
+
+    <div class="container mx-auto p-4 pl-64">
+
+        <!-- 顶部标题 -->
+        <div class="col-span-12 row-span-2 card block rounded-lg bg-white p-4">
+            <div class="flex">
+                <div class="w-1/24 h-12">
+                    <img class="w-16 h-16" src="./img/区块链.svg" alt="">
+
+                </div>
+                <div class="w-1/2 h-12 pt-2 ml-6">
+                    <p class="mb-2 text-3xl font-semibold leading-tight text-neutral-800 dark:text-neutral-50">
+                        Block #832833
+                    </p>
+                </div>
+            </div>
+
         </div>
-        <div class="bg-white shadow-md p-4 mb-4">
-            <h2 class="text-xl font-bold mb-2">区块细节</h2>
-            <p>...</p>
-            <!-- 区块细节的内容 -->
+
+        <!-- 基本信息 -->
+        <div class="flex flex-col pt-4">
+            <table class="min-w-full border text-center font-light dark:border-neutral-500">
+                <colgroup class="h-16">
+                    <col span="1" style="background-color: #F2F4FD;"
+                        class="border-b font-medium dark:border-neutral-500 h-16"> <!-- 第一列的样式 -->
+                    <col span="1"> <!-- 其他列的样式 -->
+                </colgroup>
+                <tr>
+                    <th class="border-b border-[#F2F4FD]">哈希值</th>
+                    <td class="border-b dark:border-neutral-500 p-4">0x23743bk54v0u3j95</td>
+                </tr>
+                <tr>
+                    <th class="border-b dark:border-neutral-500">创建时间</th>
+                    <td class="border-b dark:border-neutral-500 p-4">2022-08-15 10:00:00</td>
+                </tr>
+                <tr>
+                    <th class="border-b dark:border-neutral-500">前一个区块哈希值</th>
+                    <td class="border-b dark:border-neutral-500 p-4">0x0987654321fedcba</td>
+                </tr>
+                <tr>
+                    <th class="border-b dark:border-neutral-500">区块所有者</th>
+                    <td class="border-b dark:border-neutral-500 p-4">uid_014018481480</td>
+                </tr>
+            </table>
+
+
+            <hr class="my-6">
+
+            <span class="font-bold pb-2">Details</span>
+            <!-- detail -->
+            <div>
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full  sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full border text-center text-sm font-light ">
+                                <thead class="border-b font-medium border-[#F2F4FD] bg-[#F2F4FD]"
+                                    style="background-color: #F2F4FD;">
+                                    <tr class="bg-[#F2F4FD]">
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            体重指数
+                                        </th>
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            心率
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">血压</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b dark:border-neutral-500">
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            23.5
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            78
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap px-6 py-4">120/80</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full border text-center text-sm font-light ">
+                                <thead class="border-b font-medium border-[#F2F4FD] bg-[#F2F4FD]"
+                                    style="background-color: #F2F4FD;">
+                                    <tr class="bg-[#F2F4FD]">
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            血糖
+                                        </th>
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            血脂
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">血常规</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b dark:border-neutral-500">
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            95
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            正常
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap px-6 py-4">正常</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full border text-center text-sm font-light ">
+                                <thead class="border-b font-medium border-[#F2F4FD] bg-[#F2F4FD]"
+                                    style="background-color: #F2F4FD;">
+                                    <tr class="bg-[#F2F4FD]">
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            尿常规
+                                        </th>
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            腰围
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">肺功能</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b dark:border-neutral-500">
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            肺功能
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            80cm
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap px-6 py-4">良好</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full border text-center text-sm font-light ">
+                                <thead class="border-b font-medium border-[#F2F4FD] bg-[#F2F4FD]"
+                                    style="background-color: #F2F4FD;">
+                                    <tr class="bg-[#F2F4FD]">
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            骨密度
+                                        </th>
+                                        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+                                            肌肉量
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">心理健康</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b dark:border-neutral-500 ">
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            正常
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap border-r px-6 py-4 dark:border-neutral-500">
+                                            45kg
+                                        </td>
+                                        <td class="w-1/3 whitespace-nowrap px-6 py-4">稳定</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="bg-white shadow-md p-4 mb-4">
-            <h2 class="text-xl font-bold mb-2">交易记录</h2>
-            <ul>
-                <li>交易1</li>
-                <li>交易2</li>
-                <li>交易3</li>
-                <!-- 区块的交易记录 -->
-            </ul>
+
+        <hr class="my-6">
+        <span class="font-bold pb-2">价值变化</span>
+
+        <div id="lineChart" style="height: 400px;"></div>
+        <script>
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('lineChart'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['2023/12/01', '2023/12/12', '2023/12/21', '2024/01/10', '2024/01/25', '2023/02/04',
+                        '2023/02/20'
+                    ]
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'line'
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+
+        <hr class="my-6">
+        <span class="font-bold pb-2">交易记录</span>
+
+        <div class="flex flex-wrap gap-24 justify-center">
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
         </div>
-        <div class="bg-white shadow-md p-4">
-            <h2 class="text-xl font-bold mb-2">区块拥有者</h2>
-            <p>拥有者：Alice</p>
-            <!-- 区块的拥有者信息 -->
+        <div class="flex flex-wrap gap-24 justify-center mt-8">
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
+            <div class="w-1/4 justify-center">
+                <div class="bg-white shadow-md rounded-lg p-4 text-center">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="https://placekitten.com/200/200" alt="Buyer Avatar"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <img src="./img/arrow.svg" alt="Buyer Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://placekitten.com/100/100" alt="Buyer Avatar" class="w-12 h-12 rounded-full">
+                    </div>
+                    <p>时间: 2022-01-01 10:00</p>
+                    <p>金额: $100</p>
+                </div>
+            </div>
         </div>
+
     </div>
+
 </body>
+
+<style>
+    th,
+    /* td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+    } */
+</style>
 
 </html>

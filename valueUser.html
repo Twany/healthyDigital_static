@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body class="bg-gray-100 p-2">
+    <ul class="menu bg-base-200 w-56 rounded-box absolute">
+        <li><a href="./dashboard.html">首页</a></li>
+        <li><a href="./myBlock.html">我的区块</a></li>
+        <li><a href="./blockDetail.html">区块信息</a></li>
+        <li><a href="./valueUser.html">用户搜索</a></li>
+        <li><a href="./acticleDetail.html">文章信息</a></li>
+        <li><a href="./aiAnalysis.html">AI智能分析</a></li>
+
+    </ul>
+
+    <div class="grid grid-cols-12 gap-4 ml-56 mr-8">
+
+        <!-- 顶部区块链 -->
+        <div class="col-span-12 row-span-2  p-4 pb-0">
+            <div class="flex">
+                <div class="w-1/24 h-24">
+                    <img class="w-12 h-12" src="./img/user.svg" alt="">
+
+                </div>
+                <div class="w-1/2 h-24 pt-2 pl-4">
+                    <p class="mb-2 text-3xl font-semibold leading-tight text-neutral-800 dark:text-neutral-50">
+                        用户搜索
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="grid gap-x-6 md:grid-cols-4 lg:gap-x-12 ml-56 -mt-4">
+        <!-- 左侧用户列表 -->
+        <div class="col-span-1 card block rounded-lg bg-white p-2">
+            <!-- 搜索框 -->
+            <div class="mb-24 md:mb-0 mt-4 rounded-lg">
+                <select class="select select-primary w-full max-w-xs">
+                    <option disabled selected>指标</option>
+                    <option>体重指数</option>
+                    <option>血脂</option>
+                    <option>心率</option>
+                    <option>血压</option>
+                    <option>血糖</option>
+                </select>
+                <label class="input input-bordered flex items-center gap-2 mt-2">
+                    <input type="text" class="grow" placeholder="指标参数" />
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                        class="w-4 h-4 opacity-70">
+                        <path fill-rule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clip-rule="evenodd" /></svg>
+                </label>
+
+            </div>
+
+            <div class="mb-24 md:mb-0 mt-4">
+                <div
+                    class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div class="flex justify-center">
+                        <div class="flex justify-center mt-2">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/6.jpg"
+                                class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="mb-1 text-lg font-bold">李女生</h5>
+                        <p>身高：175 cm</p>
+                        <p>体重：80 kg</p>
+                        <p>心率: 78</p>
+                        <p>血压: 120/80</p>
+                        <ul class="mx-auto flex list-inside justify-center mt-2">
+                            <button class="btn btn-outline btn-primary w-full">查看更多</button>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-24 md:mb-0 mt-4">
+                <div
+                    class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div class="flex justify-center">
+                        <div class="flex justify-center mt-2">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/6.jpg"
+                                class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="mb-1 text-lg font-bold">李先生</h5>
+                        <p>身高：175 cm</p>
+                        <p>体重：80 kg</p>
+                        <p>心率: 78</p>
+                        <p>血压: 120/80</p>
+                        <ul class="mx-auto flex list-inside justify-center mt-2">
+                            <button class="btn btn-outline btn-primary w-full">查看更多</button>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧用户信息 -->
+        <div class="flex flex-wrap col-span-3 card block rounded-lg bg-white p-4 mr-8">
+            <!-- 指标雷达图 -->
+            <div class="w-full">
+                <div id="radarChart" style="height:400px;" class="w-full"> </div>
+                <script>
+                    var dom = document.getElementById("radarChart");
+                    var myChart = echarts.init(dom);
+
+                    var option = {
+                        title: {
+                            text: '用户健康指标雷达图'
+                        },
+                        tooltip: {},
+                        radar: {
+                            indicator: [{
+                                    name: '体重',
+                                    max: 100
+                                },
+                                {
+                                    name: '血压',
+                                    max: 100
+                                },
+                                {
+                                    name: '血糖',
+                                    max: 100
+                                },
+                                {
+                                    name: '胆固醇',
+                                    max: 100
+                                },
+                                {
+                                    name: '运动',
+                                    max: 100
+                                }
+                            ]
+                        },
+                        series: [{
+                            type: 'radar',
+                            data: [{
+                                value: [80, 90, 85, 75, 95],
+                                name: '健康指数'
+                            }]
+                        }]
+                    };
+
+                    myChart.setOption(option);
+                </script>
+            </div>
+
+            <!-- 文章专区 -->
+            <div class="w-full">
+                <!-- Container for demo purpose -->
+                <div class="container  mx-auto md:px-6">
+                    <!-- Section: Design Block -->
+                    <section class="mb-32">
+                        <h2 class="mb-8 text-left text-2xl font-bold">文章教程</h2>
+
+
+                        <div class="mb-8 flex flex-wrap">
+                            <div class="mb-6 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-6/12 lg:pr-6">
+                                <div class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
+                                    data-te-ripple-init data-te-ripple-color="light">
+                                    <img src="https://img1.baidu.com/it/u=1171874334,680427661&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                                        class="w-full" alt="Louvre" />
+                                    <a href="#!">
+                                        <div
+                                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 lg:pl-6">
+                                <h3 class="mb-4 text-2xl font-bold">科学减肥指南</h3>
+                                <div
+                                    class="mb-4 flex items-center text-sm font-medium text-danger dark:text-danger-500">
+                                    <div class="badge badge-neutral mr-1">减肥</div>
+                                    <div class="badge badge-secondary mr-1">饮食</div>
+                                    <div class="badge badge-primary mr-1">运动</div>
+                                </div>
+                                <p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+                                    Published <u>14.01.2022</u> by
+                                    <a href="#!">Lisa McCartney</a>
+                                </p>
+                                <p class="mb-6 text-neutral-500 dark:text-neutral-300">
+                                    减肥不仅仅是为了外观，更是为了健康。本文将介绍科学减肥的原则和方法，帮助你制定个性化的减肥计划，迈向更健康的生活。
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="mb-12">
+                        <div class="mb-16  flex flex-wrap lg:flex-row-reverse">
+                            <div class="mb-6 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-6/12 lg:pl-6">
+                                <div class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
+                                    data-te-ripple-init data-te-ripple-color="light">
+                                    <img src="https://img2.baidu.com/it/u=450122677,732264205&fm=253&fmt=auto&app=138&f=PNG?w=750&h=500"
+                                        class="w-full" alt="Louvre" />
+                                    <a href="#!">
+                                        <div
+                                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 lg:pr-6">
+                                <h3 class="mb-4 text-2xl font-bold">血压管理手册</h3>
+                                <div
+                                    class="mb-4 flex items-center text-sm font-medium text-primary dark:text-primary-400">
+                                    <div
+                                        class="mb-4 flex items-center text-sm font-medium text-danger dark:text-danger-500">
+                                        <div class="badge badge-neutral mr-1">血压管理</div>
+                                        <div class="badge badge-secondary mr-1">饮食</div>
+                                        <div class="badge badge-primary mr-1">生活方式</div>
+                                    </div>
+                                </div>
+                                <p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+                                    Published <u>12.01.2022</u> by
+                                    <a href="#!">Anna Doe</a>
+                                </p>
+                                <p class="text-neutral-500 dark:text-neutral-300">
+                                    高血压是许多健康问题的根源，本文将探讨如何通过合理的饮食、适量的运动、减少压力和其他健康习惯来管理你的血压，为你的心脏健康保驾护航。
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="mb-12">
+
+                        <div class="flex flex-wrap">
+                            <div class="mb-6 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-6/12 lg:pr-6">
+                                <div class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
+                                    data-te-ripple-init data-te-ripple-color="light">
+                                    <img src="https://img2.baidu.com/it/u=4020448840,1500953871&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281"
+                                        class="w-full" alt="Louvre" />
+                                    <a href="#!">
+                                        <div
+                                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 lg:pl-6">
+                                <h3 class="mb-4 text-2xl font-bold">血糖调控秘籍</h3>
+                                <div class="mb-4 flex items-center text-sm font-medium text-yellow-600">
+                                    <div class="badge badge-neutral mr-1">血糖调控</div>
+                                    <div class="badge badge-secondary mr-1">饮食</div>
+                                    <div class="badge badge-primary mr-1">运动</div>
+                                </div>
+                                <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
+                                    Published <u>10.01.2022</u> by
+                                    <a href="#!">Joe Svan</a>
+                                </p>
+                                <p class="text-neutral-500 dark:text-neutral-300">
+                                    血糖水平的稳定对于我们的整体健康至关重要。本文将提供实用的血糖调控建议，帮助你建立健康的生活习惯，享受平衡的生活。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Design Block -->
+                </div>
+                <!-- Container for demo purpose -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+
+</html>
